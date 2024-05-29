@@ -6,32 +6,26 @@ function App() {
   return (
     <>
       <div>
-
-        <button onClick={() => setIsOpen((prev) => !prev)} className="m-5 text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">Dropdown hover <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-        </svg>
+        <button onClick={() => setIsOpen(!isOpen)} type="button" class="m-5 inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" id="menu-button" aria-expanded="true" aria-haspopup="true">
+          Options
+          <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+          </svg>
         </button>
-        {/* <!-- Dropdown menu --> */}
-        {isOpen &&
-          < div className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-            <ul className="py-2 text-sm text-gray-700">
-              <li>
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100">Dashboard</a>
-              </li>
-              <li>
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100">Settings</a>
-              </li>
-              <li>
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100">Earnings</a>
-              </li>
-              <li>
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100">Sign out</a>
-              </li>
-            </ul>
+      </div>
+      {isOpen && (
+        <div class="absolute z-10 mt-2 w-56 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+          <div class="py-1" role="none">
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
+            <form method="POST" action="#" role="none">
+              <button type="submit" class="text-gray-700 block w-full px-4 py-2 text-left text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
+            </form>
           </div>
-        }
+        </div>
+      )}
 
-      </div >
     </>
   )
 }
